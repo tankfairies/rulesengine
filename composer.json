@@ -2,7 +2,7 @@
     "name": "tankfairies/rulesengine",
     "description": "High speed rules engine",
     "type": "library",
-    "keywords": ["rulesengine"],
+    "keywords": ["rulesengine", "rule engine", "rule parser", "expression"],
     "license": "MIT",
     "authors": [
         {
