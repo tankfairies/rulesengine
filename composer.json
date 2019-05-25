@@ -1,0 +1,41 @@
+{
+    "name": "tankfairies/rulesengine",
+    "description": "High speed rules engine",
+    "type": "library",
+    "keywords": ["rulesengine"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jon",
+            "email": "jon@tankfairies.com",
+            "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/tankfairies/rulesengine/issues"
+    },
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "RulesEngine\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "codeception/codeception": "^3.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.3.0"
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
