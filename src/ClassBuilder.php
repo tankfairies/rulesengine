@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/rulesengine
  */
 
-namespace RulesEngine;
+namespace Tankfairies\RulesEngine;
 
 /**
  * Class ClassBuilder
@@ -98,7 +98,7 @@ class ClassBuilder
         //file contents
         $output = "<?php\n"
             . "namespace {$this->namespace};\n"
-            . "class {$this->className} implements \\RulesEngine\\RuleInterface\n"
+            . "class {$this->className} implements \\Tankfairies\\RulesEngine\\RuleInterface\n"
             . "{\n {$function} }";
 
         //writes the file to disk

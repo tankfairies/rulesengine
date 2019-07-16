@@ -4,8 +4,8 @@ namespace Tests;
 
 use \Codeception\Test\Unit;
 use ReflectionProperty;
-use RulesEngine\ClassBuilder;
-use RulesEngine\RulesException;
+use Tankfairies\RulesEngine\ClassBuilder;
+use Tankfairies\RulesEngine\RulesException;
 
 class ClassBuilderTest extends Unit
 {
@@ -36,7 +36,7 @@ class ClassBuilderTest extends Unit
 
     public function testPathIsSet()
     {
-        $reflection = new ReflectionProperty('RulesEngine\ClassBuilder', 'path');
+        $reflection = new ReflectionProperty('Tankfairies\RulesEngine\ClassBuilder', 'path');
         $reflection->setAccessible(true);
         $this->assertEquals('tests/_output/', $reflection->getValue($this->classBuilder));
     }
@@ -44,7 +44,7 @@ class ClassBuilderTest extends Unit
     public function testSetClassName()
     {
         $this->classBuilder->setClassName('newClass');
-        $reflection = new ReflectionProperty('RulesEngine\ClassBuilder', 'className');
+        $reflection = new ReflectionProperty('Tankfairies\RulesEngine\ClassBuilder', 'className');
         $reflection->setAccessible(true);
         $this->assertEquals('newClass', $reflection->getValue($this->classBuilder));
     }
@@ -52,7 +52,7 @@ class ClassBuilderTest extends Unit
     public function testSetRule()
     {
         $this->classBuilder->setRule('var == 25');
-        $reflection = new ReflectionProperty('RulesEngine\ClassBuilder', 'ruleString');
+        $reflection = new ReflectionProperty('Tankfairies\RulesEngine\ClassBuilder', 'ruleString');
         $reflection->setAccessible(true);
         $this->assertEquals('var == 25', $reflection->getValue($this->classBuilder));
     }
@@ -60,7 +60,7 @@ class ClassBuilderTest extends Unit
     public function testSetNamespace()
     {
         $this->classBuilder->setNamespace('NewNameSpace');
-        $reflection = new ReflectionProperty('RulesEngine\ClassBuilder', 'namespace');
+        $reflection = new ReflectionProperty('Tankfairies\RulesEngine\ClassBuilder', 'namespace');
         $reflection->setAccessible(true);
         $this->assertEquals('NewNameSpace', $reflection->getValue($this->classBuilder));
     }
@@ -120,7 +120,7 @@ class ClassBuilderTest extends Unit
 
         $expected = "<?php\n"
             ."namespace NewNamespace;\n"
-            ."class NewClassName implements \RulesEngine\RuleInterface\n"
+            ."class NewClassName implements \Tankfairies\RulesEngine\RuleInterface\n"
             ."{\n"
             ." public function assert(array \$context): bool\n"
             ."{\n"

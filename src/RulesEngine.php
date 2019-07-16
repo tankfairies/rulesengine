@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/rulesengine
  */
 
-namespace RulesEngine;
+namespace Tankfairies\RulesEngine;
 
 /**
  * Class RulesEngine
@@ -20,7 +20,7 @@ class RulesEngine
     private const NAMESPACE = 'RulesEngineCache';
 
     /**
-     * @var RuleInterface
+     * @var Tankfairies\RuleInterface
      */
     private $rule;
     private $path;

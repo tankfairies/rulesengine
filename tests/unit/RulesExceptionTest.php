@@ -3,7 +3,7 @@
 namespace Tests;
 
 use \Codeception\Test\Unit;
-use RulesEngine\RulesException;
+use Tankfairies\RulesEngine\RulesException;
 
 class RulesExceptionTest extends Unit
 {

@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/rulesengine
  */
 
-namespace RulesEngine;
+namespace Tankfairies\RulesEngine;
 
 use Exception;
 

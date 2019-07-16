@@ -4,8 +4,8 @@ namespace Tests;
 
 use \Codeception\Test\Unit;
 use ReflectionProperty;
-use RulesEngine\RulesEngine;
-use RulesEngine\RulesException;
+use Tankfairies\RulesEngine\RulesEngine;
+use Tankfairies\RulesEngine\RulesException;
 
 class RulesEngineTest extends Unit
 {
@@ -38,7 +38,7 @@ class RulesEngineTest extends Unit
 
     public function testPathIsSet()
     {
-        $reflection = new ReflectionProperty('RulesEngine\RulesEngine', 'path');
+        $reflection = new ReflectionProperty('Tankfairies\RulesEngine\RulesEngine', 'path');
         $reflection->setAccessible(true);
         $this->assertEquals('tests/_output/', $reflection->getValue($this->rulesEngine));
     }

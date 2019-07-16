@@ -26,7 +26,7 @@ composer require tankfairies/rulesengine
 Instantiate a new instance of the library:
 
 ```php
-use Tankfairies/Rulesengine;
+use Tankfairies\Rulesengine\RulesEngine;
 
 $this->rulesEngine = new RulesEngine('storage/rules');
 $rulesEngine->setRule('var == 21');
@@ -71,3 +71,7 @@ var IN val AND var2 == "yes"
 var == 100 XOR group IN [123456, 456456]
 ['var' => '100', 'group' => 12121]
 ```
+
+## Copyright and license
+
+The tankfairies/rulesengine library is Copyright (c) 2019 Tankfairies (https://tankfairies.com) and licensed for use under the MIT License (MIT).
