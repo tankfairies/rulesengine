@@ -13,6 +13,8 @@ This gives the ability to store rules in files or databases.
 
 **This is because the rules are converted into code to make them fast**
 
+This is supported and looked after, if there's and functionality you'd like to see; let me know and I'll look into it.
+
 ## Installation
 
 Install with [Composer](https://getcomposer.org/):
