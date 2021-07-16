@@ -19,7 +19,6 @@ class ClassBuilder
 {
     private $path;
     private $className;
-    private $classFile;
     private $ruleString;
     private $namespace;
 
@@ -90,7 +89,7 @@ class ClassBuilder
             throw new RulesException('Rule not set');
         }
 
-        $this->classFile = $this->path . '/' . $this->className . ".php";
+        $classFile = $this->path . '/' . $this->className . ".php";
 
         //builds the function that does the assert
         $function = $this->buildAssertFunction();
@@ -102,7 +101,7 @@ class ClassBuilder
             . "{\n {$function} }";
 
         //writes the file to disk
-        file_put_contents($this->classFile, $output);
+        file_put_contents($classFile, $output);
 
         return $this;
     }
@@ -153,12 +152,11 @@ class ClassBuilder
         }
 
         $conditions = trim($conditions);
-        $function = "public function assert(array \$context): bool\n{\n"
+
+        return "public function assert(array \$context): bool\n{\n"
             . implode('', array_unique($sets))
             . "    return ({$conditions});\n"
             . "}\n";
-
-        return $function;
     }
 
     /**
@@ -250,7 +248,7 @@ class ClassBuilder
                 throw new RulesException('Invalid rule format');
             }
 
-            if ($this->strposa(trim($parts[1]), ['==', '!=', '>=', '<=', '<', '>', '!IN', 'IN'])) {
+            if ($this->strposa(trim($parts[1]))) {
                 $ruleSet['evaluation'] = $evaluation['condition'];
                 $ruleSet['condition'] = trim($parts[1]);
                 $arr = explode(' '.$ruleSet['condition'].' ', $evaluation['condition']);
@@ -271,11 +269,11 @@ class ClassBuilder
      * Locates a match from an array of options
      *
      * @param string $haystack
-     * @param array $needle
      * @return bool
      */
-    private function strposa(string $haystack, array $needle): bool
+    private function strposa(string $haystack): bool
     {
+        $needle = ['==', '!=', '>=', '<=', '<', '>', '!IN', 'IN'];
         foreach ($needle as $query) {
             if (strpos($haystack, $query) !== false && strlen($query) == strlen($haystack)) {
                 return true;

@@ -20,11 +20,10 @@ class RulesEngine
     private const NAMESPACE = 'RulesEngineCache';
 
     /**
-     * @var Tankfairies\RuleInterface
+     * @var RuleInterface
      */
     private $rule;
     private $path;
-    private $className;
 
 
     /**
@@ -55,25 +54,25 @@ class RulesEngine
      */
     public function setRule(string $ruleString): self
     {
-        $this->className = "Rule" . hash('ripemd160', $ruleString);
+        $className = "Rule" . hash('ripemd160', $ruleString);
 
         //build php class file and store to disk
-        $classFile = $this->path .'/'. $this->className . ".php";
+        $classFile = $this->path .'/'. $className . ".php";
         if (!file_exists($classFile)) {
             (new ClassBuilder($this->path))
-                ->setClassName($this->className)
+                ->setClassName($className)
                 ->setNamespace(self::NAMESPACE)
                 ->setRule($ruleString)
                 ->build();
         }
 
         // include $classFile;
-        if (!is_object($this->className)) {
+        if (!is_object($className)) {
             include_once $classFile;
         }
 
         //instantiated class from file
-        $class = "\\" . self::NAMESPACE . "\\" . $this->className;
+        $class = "\\" . self::NAMESPACE . "\\" . $className;
         $this->rule = new $class();
 
         return $this;

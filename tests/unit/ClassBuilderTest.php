@@ -1,11 +1,12 @@
 <?php
 
-namespace Tests;
+namespace Tests\unit;
 
 use \Codeception\Test\Unit;
 use ReflectionProperty;
 use Tankfairies\RulesEngine\ClassBuilder;
 use Tankfairies\RulesEngine\RulesException;
+use UnitTester;
 
 class ClassBuilderTest extends Unit
 {
@@ -13,7 +14,7 @@ class ClassBuilderTest extends Unit
     private $classBuilder;
 
     /**
-     * @var \UnitTester
+     * @var UnitTester
      */
     protected $tester;
 
@@ -68,7 +69,7 @@ class ClassBuilderTest extends Unit
     public function testBuildNoPath()
     {
         $this->classBuilder = new ClassBuilder('');
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Path not set'),
             function () {
                 $this->classBuilder->build();
@@ -78,7 +79,7 @@ class ClassBuilderTest extends Unit
 
     public function testBuildNoclassName()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Classname not set'),
             function () {
                 $this->classBuilder->build();
@@ -88,7 +89,7 @@ class ClassBuilderTest extends Unit
 
     public function testBuildNoNamespace()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Namespace not set'),
             function () {
                 $this->classBuilder->setClassName('newClassName')->build();
@@ -98,7 +99,7 @@ class ClassBuilderTest extends Unit
 
     public function testBuildNoRule()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Rule not set'),
             function () {
                 $this->classBuilder->setClassName('NewClassName')->setNamespace('NewNamespace')->build();

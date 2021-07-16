@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\unit;
 
 use \Codeception\Test\Unit;
 use Tankfairies\RulesEngine\RulesException;
@@ -23,7 +23,7 @@ class RulesExceptionTest extends Unit
 
     public function testException()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('this is a test'),
             function () {
                 throw new RulesException('this is a test');

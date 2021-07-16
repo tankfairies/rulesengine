@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\unit;
 
 use \Codeception\Test\Unit;
 use ReflectionProperty;
@@ -52,7 +52,7 @@ class RulesEngineTest extends Unit
 
     public function testSetInvalidRule()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Invalid rule format'),
             function () {
                 $this->rulesEngine->setRule('var==val');
@@ -62,7 +62,7 @@ class RulesEngineTest extends Unit
 
     public function testRuleNotSet()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Rule not set'),
             function () {
                 $this->rulesEngine->setRule('');
@@ -72,7 +72,7 @@ class RulesEngineTest extends Unit
 
     public function testRuleNotSet2()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Rule not set'),
             function () {
                 $this->rulesEngine->evaluate(['var' => 'bob']);
@@ -215,7 +215,7 @@ class RulesEngineTest extends Unit
 
     public function testRuleNotSet20()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Unknown condition in rule'),
             function () {
                 $this->ruleTests('var ==> 100', ['var' => 100]);
@@ -225,7 +225,7 @@ class RulesEngineTest extends Unit
 
     public function testRuleNotSet21()
     {
-        $this->tester->expectException(
+        $this->tester->expectThrowable(
             new RulesException('Unknown condition in rule'),
             function () {
                 $this->ruleTests('var => 100', ['var' => 100]);
