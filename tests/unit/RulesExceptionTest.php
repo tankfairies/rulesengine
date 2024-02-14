@@ -4,14 +4,15 @@ namespace Tests\unit;
 
 use \Codeception\Test\Unit;
 use Tankfairies\RulesEngine\RulesException;
+use UnitTester;
 
 class RulesExceptionTest extends Unit
 {
 
     /**
-     * @var \UnitTester
+     * @var UnitTester
      */
-    protected $tester;
+    protected UnitTester $tester;
 
     protected function _before()
     {

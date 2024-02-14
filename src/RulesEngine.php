@@ -22,8 +22,8 @@ class RulesEngine
     /**
      * @var RuleInterface
      */
-    private $rule;
-    private $path;
+    private RuleInterface $rule;
+    private string $path;
 
 
     /**

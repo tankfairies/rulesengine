@@ -6,31 +6,32 @@ use \Codeception\Test\Unit;
 use ReflectionProperty;
 use Tankfairies\RulesEngine\RulesEngine;
 use Tankfairies\RulesEngine\RulesException;
+use  UnitTester;
 
 class RulesEngineTest extends Unit
 {
 
     /**
-     * @var RulesEngine
+     * @var RulesEngine|null
      */
-    private $rulesEngine;
+    private RulesEngine|null $rulesEngine;
 
     /**
-     * @var \UnitTester
+     * @var UnitTester
      */
-    protected $tester;
+    protected UnitTester $tester;
 
-    protected function _before()
+    protected function _before(): void
     {
         $this->rulesEngine = new RulesEngine('tests/_output/');
     }
 
-    protected function _after()
+    protected function _after(): void
     {
         $this->rulesEngine = null;
     }
 
-    protected function cleanup($rule)
+    protected function cleanup(string $rule): void
     {
         $file = "Rule" . hash('ripemd160', $rule).'.php';
         unlink(__DIR__.'/../_output/'.$file);
@@ -39,7 +40,6 @@ class RulesEngineTest extends Unit
     public function testPathIsSet()
     {
         $reflection = new ReflectionProperty('Tankfairies\RulesEngine\RulesEngine', 'path');
-        $reflection->setAccessible(true);
         $this->assertEquals('tests/_output/', $reflection->getValue($this->rulesEngine));
     }
 
@@ -80,7 +80,7 @@ class RulesEngineTest extends Unit
         );
     }
 
-    protected function ruleTests($rule, $values)
+    protected function ruleTests($rule, $values): bool
     {
         $this->rulesEngine->setRule($rule);
         $result = $this->rulesEngine->evaluate($values);

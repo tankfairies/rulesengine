@@ -11,25 +11,25 @@ use UnitTester;
 class ClassBuilderTest extends Unit
 {
 
-    private $classBuilder;
+    private ClassBuilder|null $classBuilder;
 
     /**
      * @var UnitTester
      */
-    protected $tester;
+    protected UnitTester $tester;
 
-    protected function _before()
+    protected function _before(): void
     {
         $this->classBuilder = new ClassBuilder('tests/_output/');
     }
 
 
-    protected function _after()
+    protected function _after(): void
     {
         $this->classBuilder = null;
     }
 
-    protected function cleanup($rule)
+    protected function cleanup($rule): void
     {
         $file = "Rule" . hash('ripemd160', $rule).'.php';
         unlink(__DIR__.'/../_output/'.$file);
@@ -38,7 +38,6 @@ class ClassBuilderTest extends Unit
     public function testPathIsSet()
     {
         $reflection = new ReflectionProperty('Tankfairies\RulesEngine\ClassBuilder', 'path');
-        $reflection->setAccessible(true);
         $this->assertEquals('tests/_output/', $reflection->getValue($this->classBuilder));
     }
 
@@ -46,7 +45,6 @@ class ClassBuilderTest extends Unit
     {
         $this->classBuilder->setClassName('newClass');
         $reflection = new ReflectionProperty('Tankfairies\RulesEngine\ClassBuilder', 'className');
-        $reflection->setAccessible(true);
         $this->assertEquals('newClass', $reflection->getValue($this->classBuilder));
     }
 
@@ -54,7 +52,6 @@ class ClassBuilderTest extends Unit
     {
         $this->classBuilder->setRule('var == 25');
         $reflection = new ReflectionProperty('Tankfairies\RulesEngine\ClassBuilder', 'ruleString');
-        $reflection->setAccessible(true);
         $this->assertEquals('var == 25', $reflection->getValue($this->classBuilder));
     }
 
@@ -62,7 +59,6 @@ class ClassBuilderTest extends Unit
     {
         $this->classBuilder->setNamespace('NewNameSpace');
         $reflection = new ReflectionProperty('Tankfairies\RulesEngine\ClassBuilder', 'namespace');
-        $reflection->setAccessible(true);
         $this->assertEquals('NewNameSpace', $reflection->getValue($this->classBuilder));
     }
 

@@ -17,10 +17,10 @@ namespace Tankfairies\RulesEngine;
  */
 class ClassBuilder
 {
-    private $path;
-    private $className;
-    private $ruleString;
-    private $namespace;
+    private string $path;
+    private string $className;
+    private string $ruleString;
+    private string $namespace;
 
     /**
      * ClassBuilder constructor.
@@ -193,8 +193,8 @@ class ClassBuilder
         $isNumeric = is_numeric(str_replace(['"', "'"], "", $field));
 
         if ($isNumeric
-            || strpos($field, '"') !== false
-            || strpos($field, "'") !== false
+            || str_contains($field, '"')
+            || str_contains($field, "'")
         ) {
             //string or numeric
             if ($isNumeric) {
@@ -202,7 +202,7 @@ class ClassBuilder
             } else {
                 $value = $field;
             }
-        } elseif (strpos($field, '[') !== false) {
+        } elseif (str_contains($field, '[')) {
             //array
             $field = $value = '[' . str_replace(["[", "]"], "", $field) . ']';
         }
@@ -275,7 +275,7 @@ class ClassBuilder
     {
         $needle = ['==', '!=', '>=', '<=', '<', '>', '!IN', 'IN'];
         foreach ($needle as $query) {
-            if (strpos($haystack, $query) !== false && strlen($query) == strlen($haystack)) {
+            if (str_contains($haystack, $query) && strlen($query) == strlen($haystack)) {
                 return true;
             }
         }
