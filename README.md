@@ -23,6 +23,29 @@ Install with [Composer](https://getcomposer.org/):
 composer require tankfairies/rulesengine
 ```
 
+## Performance
+
+These tests were run on an Mac M1 Max with 32GB.
+
+Running 100,000 executions 5 times: -
+
+    1 => 1.0200 seconds
+    2 => 1.0146 seconds
+    3 => 1.0219 seconds
+    4 => 1.0226 seconds
+    5 => 1.0206 seconds
+
+Performance increases once the rule has been built: -
+
+    1 => 1.0178 seconds
+    2 => 1.0135 seconds
+    3 => 1.0180 seconds
+    4 => 1.0110 seconds
+    5 => 1.0097 seconds
+
+On Average that's ~100000 calls per second.
+Performance testing was done with - ```tankfairies/benchmark```
+
 ## Usage
 
 Instantiate a new instance of the library:

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1be59931850eee8a35471fbb7639fff",
+    "content-hash": "f7386cd5ececdf0ec938ec3a7e11e56f",
     "packages": [],
     "packages-dev": [
         {
@@ -4086,6 +4086,57 @@
                 }
             ],
             "time": "2024-01-23T15:02:46+00:00"
+        },
+        {
+            "name": "tankfairies/benchmark",
+            "version": "1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tankfairies/benchmark.git",
+                "reference": "85c2cb478fa5ee93e99509cad015cb17bc12c243"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tankfairies/benchmark/zipball/85c2cb478fa5ee93e99509cad015cb17bc12c243",
+                "reference": "85c2cb478fa5ee93e99509cad015cb17bc12c243",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "codeception/codeception": "^5.1",
+                "codeception/module-asserts": "^3.0",
+                "codeception/module-phpbrowser": "^3.0",
+                "dg/bypass-finals": "^1.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tankfairies\\Benchmark\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon",
+                    "email": "jon@tankfairies.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "benchmark code",
+            "homepage": "https://tankfairies.com/",
+            "keywords": [
+                "benchmark"
+            ],
+            "support": {
+                "issues": "https://github.com/tankfairies/benchmark/issues",
+                "source": "https://github.com/tankfairies/benchmark/tree/1.3"
+            },
+            "time": "2024-03-19T23:21:15+00:00"
         },
         {
             "name": "theseer/tokenizer",

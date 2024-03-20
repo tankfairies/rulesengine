@@ -4,6 +4,8 @@ namespace Tests\unit;
 
 use \Codeception\Test\Unit;
 use ReflectionProperty;
+use Tankfairies\Benchmark\Benchmark;
+use Tankfairies\Benchmark\Stopwatch;
 use Tankfairies\RulesEngine\RulesEngine;
 use Tankfairies\RulesEngine\RulesException;
 use  UnitTester;
@@ -231,5 +233,27 @@ class RulesEngineTest extends Unit
                 $this->ruleTests('var => 100', ['var' => 100]);
             }
         );
+    }
+
+    public function testPerformance()
+    {
+        $func = function () {
+            $rulesEngine = new RulesEngine('tests/_output/');
+
+            $rulesEngine->setRule('var1 == 100 XOR var2 IN [12, 46]');
+            $result = $rulesEngine->evaluate(['var1' => 90, 'var2' => 12]);
+        };
+
+        $benchmark = new Benchmark(new Stopwatch());
+        $results = $benchmark
+            ->multiplier(100000, 5)
+            ->script($func)
+            ->run();
+
+        $average = array_sum($results['time'])/count($results['time']);
+
+        $this->assertLessThan(1.1, $average);
+
+        $this->cleanup('var1 == 100 XOR var2 IN [12, 46]');
     }
 }
