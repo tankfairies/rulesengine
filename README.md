@@ -2,7 +2,7 @@
 [![Total Downloads](https://poser.pugx.org/tankfairies/rulesengine/downloads)](https://packagist.org/packages/tankfairies/rulesengine)
 [![Latest Unstable Version](https://poser.pugx.org/tankfairies/rulesengine/v/unstable)](https://packagist.org/packages/tankfairies/rulesengine)
 [![License](https://poser.pugx.org/tankfairies/rulesengine/license)](https://packagist.org/packages/tankfairies/rulesengine)
-[![Build Status](https://travis-ci.com/tankfairies/rulesengine.svg?branch=2.0)](https://travis-ci.com/github/tankfairies/rulesengine)
+[![Build Status](https://app.travis-ci.com/tankfairies/rulesengine.svg?token=FGxfEWac5mNbgFL7m8UP&branch=2.0)](https://app.travis-ci.com/tankfairies/rulesengine)
 
 
 # Rulesengine
